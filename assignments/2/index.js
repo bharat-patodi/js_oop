@@ -44,7 +44,9 @@ personStore.greet(); // -> Logs 'hello'
 function personFromPersonStore(name, age) {
 	// add code here
   let newPerson = Object.create(personStore);
-
+  newPerson.name = name;
+  newPerson.age = age;
+  return newPerson;
 }
 
 var sandra = personFromPersonStore('Sandra', 26);
@@ -60,7 +62,9 @@ var sandra = personFromPersonStore('Sandra', 26);
 /*** CHALLENGE 3 of 3 ***/
 
 // add code here
-
+personStore.introduce = function() {
+  console.log("Hi, my name is " + this.name);
+}
 // sandra.introduce(); // -> Logs 'Hi, my name is Sandra'
 
 
@@ -75,8 +79,9 @@ var sandra = personFromPersonStore('Sandra', 26);
 
 function PersonConstructor() {
 	// add code here
-
-
+  this.greet = function() {
+    console.log('hello');
+  }
 }
 
 
@@ -88,13 +93,16 @@ var simon = new PersonConstructor;
 
 /*** CHALLENGE 2 of 3 ***/
 
-function personFromConstructor(name, age) {
-	// add code here
-
-
+function PersonFromConstructor(name, age) {
+  // add code here
+    this.name = name;
+    this.age = age;
+    this.greet = function() {
+      console.log("hello");
+    }
 }
 
-var mike = personFromConstructor('Mike', 30);
+var mike = PersonFromConstructor('Mike', 30);
 
 
 // /********* Uncomment these lines to test your work! *********/
@@ -106,9 +114,11 @@ var mike = personFromConstructor('Mike', 30);
 
 /*** CHALLENGE 3 of 3 ***/
 // add code here
+PersonConstructor.introduce = function(name) {
+  console.log(`Hi, my name is ${name}`);
+}
 
-
-// mike.introduce(); // -> Logs 'Hi, my name is Mike'
+mike.introduce(); // -> Logs 'Hi, my name is Mike'
 
 
 /****************************************************************
@@ -118,14 +128,15 @@ var mike = personFromConstructor('Mike', 30);
 /*** CHALLENGE 1 of 3 ***/
 
 class PersonClass {
-	constructor() {
+	constructor(name) {
     // add code here
-
-
+    this.name = name;
 	}
 
 	// add code here
-
+    greet() {
+      console.log('hello');
+    }
 }
 
 
@@ -138,10 +149,17 @@ var george = new PersonClass;
 /*** CHALLENGE 2 of 3 ***/
 
 // add code here
-
+class DeveloperClass extends PersonClass {
+  constructor(name) {
+    super(name);
+  }
+  introduce() {
+    console.log(`Hello World, my name is ${name}`);
+  }
+}
 
 // /********* Uncomment these lines to test your work! *********/
-// var thai = new DeveloperClass('Thai', 32);
+var thai = new DeveloperClass('Thai', 32);
 // console.log(thai.name); // -> Logs 'Thai'
 // thai.introduce(); //-> Logs 'Hello World, my name is Thai'
 
