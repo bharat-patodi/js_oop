@@ -5,9 +5,11 @@
 /*** CHALLENGE 1 of 1 ***/
 
 function makePerson(name, age) {
-	// add code here
-
-
+  // add code here
+  let result = {};
+  result.name = name;
+  result.age = age;
+  return result;
 }
 
 var vicky = makePerson('Vicky', 24);
@@ -29,20 +31,19 @@ var vicky = makePerson('Vicky', 24);
 
 var personStore = {
 	// add code here
-
-
+  greet: function() {
+    console.log("hello");
+  }
 };
 
 // /********* Uncomment this line to test your work! *********/
-// personStore.greet(); // -> Logs 'hello'
-
-
+personStore.greet(); // -> Logs 'hello'
 
 /*** CHALLENGE 2 of 3 ***/
 
 function personFromPersonStore(name, age) {
 	// add code here
-
+  let newPerson = Object.create(personStore);
 
 }
 
